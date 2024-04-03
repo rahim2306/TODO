@@ -46,6 +46,7 @@ dependencies:
   animated_toggle_switch: ^0.8.2
   percent_indicator: ^4.2.3
   popover: ^0.3.0
+  table_calendar: ^3.1.1
 
 
 dev_dependencies:

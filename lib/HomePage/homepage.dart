@@ -9,6 +9,7 @@ import 'package:project/HomePage/widgets/build_sheet.dart';
 import 'package:project/HomePage/widgets/categoryslide.dart';
 import 'package:project/HomePage/widgets/dbd.dart';
 import 'package:project/HomePage/widgets/task.dart';
+import 'package:project/Main%20Widgets/appbar.dart';
 
 class TodoHomePage extends StatefulWidget {
 
@@ -23,47 +24,6 @@ class _TodoHomePageState extends State<TodoHomePage> {
   final items = ['Sort By', 'Completed'];
   String selectedValue = 'Sort By';
 
-  
-  AppBar _buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: Color(0xFFDCDEE3),
-      elevation: 0,
-      shadowColor: Color(0xFFDCDEE3),
-      toolbarHeight: MediaQuery.of(context).size.height * 0.09,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Image.asset(
-            'assets/images/HeaderLogo.png',
-            width: MediaQuery.of(context).size.width * 0.36,
-          ),
-          Spacer(),
-          _buildProfileButton(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildProfileButton() {
-    return IconButton(
-      onPressed: () {
-        // Navigate to profile page or show profile options
-      },
-      icon: CircleAvatar(
-        radius: 26,
-        backgroundColor: Colors.transparent,
-        child: CircleAvatar(
-          radius: 25,
-          backgroundColor: Color(0xff455E86),
-          child: Icon(
-            Icons.account_circle,
-            size: 50,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget _buildTaskListItem(String title, bool hasPB) {
     return TodoTask(
@@ -183,7 +143,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: _buildAppBar(context),
+      appBar: BuildAppBar(),
       body: _buildBody(context),
       floatingActionButton: SizedBox(
         height: MediaQuery.sizeOf(context).height *.09,
