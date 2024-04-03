@@ -1,9 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:project/Intro/intro_page.dart';
-import 'package:project/Intro/loginsignupscreen.dart';
-import 'package:project/Intro/name_question.dart';
+import 'package:project/Intro/Pages/intro_page.dart';
+import 'package:project/Intro/Pages/loginsignupscreen.dart';
+import 'package:project/Intro/Pages/name_question.dart';
 
 class MyPageView extends StatelessWidget {
   final PageController controller = PageController(initialPage: 0);

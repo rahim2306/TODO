@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project/Intro/pageview.dart';
+import 'package:project/Intro/Pages/pageview.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

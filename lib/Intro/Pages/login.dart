@@ -4,31 +4,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project/widgets/logininputfield.dart';
+import 'package:project/Intro/widgets/logininputfield.dart';
 
+class LoginPage extends StatelessWidget {
 
-
-class SignUpPage extends StatelessWidget {
   final PageController controller;
 
-  const SignUpPage({super.key, required this.controller});
-  
-  
+  const LoginPage({super.key, required this.controller});
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 90,
-                width: 360,
-                child: Stack(
-                  children: [
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only( left:8, right:8 ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 86,
+              width: 360,
+              child: Stack(
+                children: [
                   Positioned(
                     bottom: 25,
                     right:MediaQuery.sizeOf(context).width*0.6010,
@@ -44,14 +41,14 @@ class SignUpPage extends StatelessWidget {
                   ),
                   Positioned(
                     bottom: 45,
-                    left:MediaQuery.sizeOf(context).width*0.222,
+                    left:MediaQuery.sizeOf(context).width*0.245,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 8.0),
                           child: Text(
-                            "SignUp",
+                            "Login",
                             style: GoogleFonts.spaceGrotesk(
                               fontSize: 35,
                               fontWeight: FontWeight.w800,
@@ -64,14 +61,14 @@ class SignUpPage extends StatelessWidget {
                   ),
                   Positioned(
                     bottom: 33,
-                    left:MediaQuery.sizeOf(context).width*0.198,
+                    left:MediaQuery.sizeOf(context).width*0.167,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 8.0),
                           child: Text(
-                            "Create your account",
+                            "Enter Your Informations",
                             style: GoogleFonts.spaceGrotesk(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -83,33 +80,13 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                 ],
-                ),
               ),
-              LoginInputField(
-                hintText: 'Example@mail.com',
-                text: 'Email',
-                fontsize: 20,
-                icon: AssetImage('assets/icons/Mail.png'),
-                iconCanBeTapped: false,
-              ),
-              LoginInputField(
-                hintText: '••••••••',
-                text: 'Password',
-                fontsize: 24,
-                icon: AssetImage('assets/icons/openeye.png'),
-                iconCanBeTapped: true,
-                tappedIcon: AssetImage('assets/icons/eye.png'),
-              ),
-              LoginInputField(
-                hintText: '••••••••',
-                text: 'Confirm Password',
-                fontsize: 24,
-                icon: AssetImage('assets/icons/openeye.png'),
-                iconCanBeTapped: true,
-                tappedIcon: AssetImage('assets/icons/eye.png'),
-              ),
-            ],
-          ),
+            ),
+            LoginInputField(hintText: 'Example@mail.com', text: 'Email',fontsize: 20,icon: AssetImage('assets/icons/Mail.png'), iconCanBeTapped: false),
+            SizedBox(height: MediaQuery.sizeOf(context).height*0),
+            LoginInputField(hintText: '••••••••',text: 'Password',fontsize: 24,icon: AssetImage('assets/icons/openeye.png'), iconCanBeTapped: true, tappedIcon: AssetImage('assets/icons/eye.png'),),
+            SizedBox(height:10,)
+          ],
         ),
       ),
     );

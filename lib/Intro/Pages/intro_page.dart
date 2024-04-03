@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project/widgets/footer_widget.dart';
-import 'package:project/widgets/introbutton.dart';
+import 'package:project/Intro/widgets/footer_widget.dart';
+import 'package:project/Intro/widgets/introbutton.dart';
 
 class Intro extends StatelessWidget {
 
