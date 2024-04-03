@@ -1,19 +1,18 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:project/HomePage/Pages/page1.dart';
-import 'package:project/HomePage/Pages/page2.dart';
-import 'package:project/HomePage/widgets/cancelbutton.dart';
+import 'package:project/HomePage/Pages/page1edit.dart';
+import 'package:project/HomePage/Pages/page2edit.dart';
 import 'package:project/HomePage/widgets/homebutton.dart';
 
-class SheetPage extends StatefulWidget {
-  const SheetPage({super.key});
+class SecondSheetPage extends StatefulWidget {
+  const SecondSheetPage({super.key});
 
   @override
-  _SheetPageState createState() => _SheetPageState();
+  _SecondSheetPageState createState() => _SecondSheetPageState();
 }
 
-class _SheetPageState extends State<SheetPage> {
+class _SecondSheetPageState extends State<SecondSheetPage> {
   final PageController _pageController = PageController(initialPage: 0);
   bool isFirst = true;
   
@@ -31,14 +30,6 @@ class _SheetPageState extends State<SheetPage> {
     }
   }
 
-  void previousPage() {
-    if (_pageController.page! > 0) {
-      _pageController.previousPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.ease,
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,30 +48,18 @@ class _SheetPageState extends State<SheetPage> {
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _pageController,
                 children: <Widget>[
-                  Page1(),
-                  Page2(),
+                  EditPage1(),
+                  EditPage2(),
                 ],
               ),
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomCancelButton(
-              text: 'Cancel',
-              onPressed: () => Navigator.of(context).pop(),
-              width: MediaQuery.sizeOf(context).width*0.39,
-              height: MediaQuery.sizeOf(context).height*0.076,
-            ),
-            SizedBox(width: MediaQuery.sizeOf(context).width*0.03),
-            CustomHomeButton(
-              text: isFirst ? 'Continue' : 'Confirm',
-              onPressed: () => nextPage(),
-              width: MediaQuery.sizeOf(context).width*0.39,
-              height: MediaQuery.sizeOf(context).height*0.076,
-            ),
-          ],
+        CustomHomeButton(
+          text: isFirst ? 'Continue':'Edit',
+          onPressed: () => nextPage(),
+          width: MediaQuery.sizeOf(context).width*0.39,
+          height: MediaQuery.sizeOf(context).height*0.076,
         ),
         SizedBox(height: MediaQuery.sizeOf(context).height*0.03,)
       ],

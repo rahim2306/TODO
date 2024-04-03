@@ -26,10 +26,12 @@ class _TodoHomePageState extends State<TodoHomePage> {
   
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color(0xFFDCDEE3),
       elevation: 0,
-      toolbarHeight: MediaQuery.of(context).size.height * 0.12,
+      shadowColor: Color(0xFFDCDEE3),
+      toolbarHeight: MediaQuery.of(context).size.height * 0.09,
       title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Image.asset(
             'assets/images/HeaderLogo.png',
@@ -84,9 +86,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.sizeOf(context).height*0.134,),
+            SizedBox(height: 10,),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),
+              padding: const EdgeInsets.only(right: 20.0,left:20,bottom: 10),
               child: Container(
                 height: 130.0,
                 decoration: BoxDecoration(
@@ -181,7 +183,6 @@ class _TodoHomePageState extends State<TodoHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      extendBodyBehindAppBar: true,
       appBar: _buildAppBar(context),
       body: _buildBody(context),
       floatingActionButton: SizedBox(

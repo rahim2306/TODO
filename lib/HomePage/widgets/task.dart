@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project/HomePage/widgets/buildsecondsheet.dart';
 import 'package:project/HomePage/widgets/percentindicator.dart';
 
 class TodoTask extends StatefulWidget {
@@ -49,11 +50,22 @@ class _TodoTaskState extends State<TodoTask> {
           extentRatio: 0.25,
           children: [
             CustomSlidableAction(
-              onPressed: (context) => {},
+              onPressed: (context) {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(40)
+                    )
+                  ),
+                  builder: (BuildContext context) => SecondSheetPage(),
+                );
+              },
               autoClose: true,
               backgroundColor: Colors.blueGrey,
               borderRadius: BorderRadius.circular(20),
-              padding : const EdgeInsets.symmetric(horizontal:8),
+              padding : EdgeInsets.symmetric(horizontal:8),
               child: const Icon(Icons.edit),
             )
           ],
