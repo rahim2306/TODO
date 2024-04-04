@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: prefer_const_constructors
 
 
@@ -5,59 +6,65 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropDownButton extends StatefulWidget {
-  const CustomDropDownButton({super.key});
+  final double size;
+
+  const CustomDropDownButton({
+    super.key,
+    required this.size,
+  });
 
   @override
   State<CustomDropDownButton> createState() => _CustomDropDownButtonState();
 }
 
 class _CustomDropDownButtonState extends State<CustomDropDownButton> {
+
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
-                child: DropdownButton2(
-                  customButton: const Icon(
-                    Icons.list,
-                    size: 46,
-                    color: Color(0xff557BB5),
-                  ),
-                  items: [
-                    ...MenuItems.firstItems.map(
-                      (item) => DropdownMenuItem<MenuItem>(
-                        value: item,
-                        child: MenuItems.buildItem(item),
-                      ),
-                    ),
-                    const DropdownMenuItem<Divider>(enabled: false, child: Divider()),
-                    ...MenuItems.secondItems.map(
-                      (item) => DropdownMenuItem<MenuItem>(
-                        value: item,
-                        child: MenuItems.buildItem(item),
-                      ),
-                    ),
-                  ],
-                  onChanged: (value) {
-                    MenuItems.onChanged(context, value! as MenuItem);
-                  },
-                  dropdownStyleData: DropdownStyleData(
-                    width: 160,
-                    padding: const EdgeInsets.symmetric(vertical: 6),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xff557BB5),
-                    ),
-                    offset: const Offset(0, 8),
-                  ),
-                  menuItemStyleData: MenuItemStyleData(
-                    customHeights: [
-                      ...List<double>.filled(MenuItems.firstItems.length, 48),
-                      8,
-                      ...List<double>.filled(MenuItems.secondItems.length, 48),
-                    ],
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                  ),
-                ),
-              );
+      child: DropdownButton2(
+        customButton: Icon(
+          Icons.list,
+          size: widget.size,
+          color: Color(0xff557BB5),
+        ),
+        items: [
+          ...MenuItems.firstItems.map(
+            (item) => DropdownMenuItem<MenuItem>(
+              value: item,
+              child: MenuItems.buildItem(item),
+            ),
+          ),
+          const DropdownMenuItem<Divider>(enabled: false, child: Divider()),
+          ...MenuItems.secondItems.map(
+            (item) => DropdownMenuItem<MenuItem>(
+              value: item,
+              child: MenuItems.buildItem(item),
+            ),
+          ),
+        ],
+        onChanged: (value) {
+          MenuItems.onChanged(context, value! as MenuItem);
+        },
+        dropdownStyleData: DropdownStyleData(
+          width: 160,
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color(0xff557BB5),
+          ),
+          offset: const Offset(0, 8),
+        ),
+        menuItemStyleData: MenuItemStyleData(
+          customHeights: [
+            ...List<double>.filled(MenuItems.firstItems.length, 48),
+            8,
+            ...List<double>.filled(MenuItems.secondItems.length, 48),
+          ],
+          padding: const EdgeInsets.only(left: 16, right: 16),
+        ),
+      ),
+    );
   }
 }
 class MenuItem {

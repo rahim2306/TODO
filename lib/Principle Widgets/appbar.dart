@@ -3,13 +3,15 @@
 import 'package:flutter/material.dart';
 
 class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const BuildAppBar({super.key});
+  const BuildAppBar({super.key, required this.isWhite});
+  
+  final bool isWhite;
 
   @override
   Widget build(BuildContext context) {
 
     return AppBar(
-      backgroundColor: Color(0xFFDCDEE3),
+      backgroundColor: isWhite ? Color(0xfff7f7f7) :Color(0xFFDCDEE3),
       elevation: 0,
       shadowColor: Color(0xFFDCDEE3),
       toolbarHeight: MediaQuery.of(context).size.height * 0.1,

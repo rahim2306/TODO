@@ -108,7 +108,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
                   ),
                 ),
                 SizedBox(width: MediaQuery.sizeOf(context).width*0.04,),
-                CustomDropDownButton(),
+                CustomDropDownButton(size:46),
               ],
             ),
             ListView(
@@ -143,7 +143,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: BuildAppBar(),
+      appBar: BuildAppBar(isWhite: false,),
       body: _buildBody(context),
       floatingActionButton: FAB(),
       floatingActionButtonLocation: LowerCenterFabLocation(context),
