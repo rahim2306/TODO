@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project/Callendar/callenderpage.dart';
+import 'package:project/HomePage/homepage.dart';
 
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -42,7 +44,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
           left: MediaQuery.sizeOf(context).width *.15,
           child: GestureDetector(
             onTap: () {
-              // Handle tap action here
+              if(!isHome)
+              {Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => TodoHomePage()),
+              );}
             },
             child: Container(
               height: MediaQuery.sizeOf(context).height *.075,
@@ -53,13 +59,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 boxShadow: isHome
                     ? [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.2), // Shadow color with opacity
-                          spreadRadius: 2, // Spread radius
-                          blurRadius: 2, // Blur radius
-                          offset: Offset(0, 2), // Offset in the y direction (downward)
+                          color: Colors.black.withOpacity(0.2),
+                          spreadRadius: 2, 
+                          blurRadius: 2, 
+                          offset: Offset(0, 2), 
                         ),
                       ]
-                    : null, // No shadow if _isHome is false
+                    : null, 
               ),
               child: Image(
                 image: AssetImage(
@@ -74,7 +80,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
           right: MediaQuery.sizeOf(context).width * 0.15,
           child: GestureDetector(
             onTap: () {
-              // Handle tap action here
+              if(isHome)
+              {Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => CalendarPage()),
+              );}
             },
             child: Container(
               height: MediaQuery.sizeOf(context).height * 0.075,

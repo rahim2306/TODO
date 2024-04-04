@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/HomePage/class/lowerfab.dart';
 import 'package:project/HomePage/widgets/bnb.dart';
-import 'package:project/HomePage/widgets/build_sheet.dart';
 import 'package:project/HomePage/widgets/categoryslide.dart';
 import 'package:project/HomePage/widgets/dbd.dart';
+import 'package:project/HomePage/widgets/fab.dart';
 import 'package:project/HomePage/widgets/task.dart';
 import 'package:project/Main%20Widgets/appbar.dart';
 
@@ -145,47 +145,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
       extendBody: true,
       appBar: BuildAppBar(),
       body: _buildBody(context),
-      floatingActionButton: SizedBox(
-        height: MediaQuery.sizeOf(context).height *.09,
-        width: MediaQuery.sizeOf(context).height *.09,
-        child: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(40)
-                )
-              ),
-              builder: (BuildContext context) => SheetPage(),
-            );
-          },
-          shape: const CircleBorder(),
-          backgroundColor: Colors.transparent,
-          elevation: 3,
-          child: Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle, 
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xffA8C2E9),
-                  Color(0xff789DD6),
-                ],
-              ),
-            ),
-            child: Icon(
-              Icons.add_rounded,
-              color: Colors.white,
-              size: MediaQuery.of(context).size.height * 0.08,
-            ),
-          ),
-        ),
-      ),
+      floatingActionButton: FAB(),
       floatingActionButtonLocation: LowerCenterFabLocation(context),
       bottomNavigationBar: CustomBottomNavigationBar(isHome: true, context2: context,),
     );
