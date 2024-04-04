@@ -25,7 +25,7 @@ class EditPage1 extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20.0),
               child: Text(
-                'EditEdit Task',
+                'Edit Task',
                 textAlign: TextAlign.left,
                 style: GoogleFonts.spaceGrotesk(
                   color: const Color(0xff557BB5),
