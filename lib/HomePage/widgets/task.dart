@@ -79,7 +79,7 @@ class _TodoTaskState extends State<TodoTask> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300), // Adjust duration as needed
             curve: Curves.easeInOut, // Adjust curve as needed
-            height: _expanded ? MediaQuery.of(context).size.height * 0.22 : MediaQuery.of(context).size.height * 0.07,
+            height: _expanded ? MediaQuery.of(context).size.height * 0.22 : 60,
             child: _buildTaskItem(context),
           ),
         ),

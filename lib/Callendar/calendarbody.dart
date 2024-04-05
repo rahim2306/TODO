@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace
 
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:project/HomePage/widgets/categoryslide.dart';
+import 'package:project/HomePage/widgets/task.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:project/HomePage/widgets/dbd.dart';
 
@@ -39,12 +42,14 @@ class _CalenderBodyState extends State<CalenderBody> {
         controller: widget.scrollController,
         slivers: [
           SliverAppBar(
-            elevation: 2,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            elevation: 2,    
             shadowColor: Color(0xff000000),
             expandedHeight: MediaQuery.sizeOf(context).height*0.49,
             collapsedHeight: MediaQuery.sizeOf(context).height*0.1,
             pinned: true,
             stretch: true,
+            backgroundColor: Color(0xFFDCDEE3),
             shape: ContinuousRectangleBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(60),
@@ -71,6 +76,7 @@ class _CalenderBodyState extends State<CalenderBody> {
                   CustomDropDownButton(size: 40),
                 ],
               ),
+              
               titlePadding: EdgeInsets.symmetric(horizontal: 20.0),
               stretchModes: [
                 StretchMode.zoomBackground,
@@ -81,14 +87,14 @@ class _CalenderBodyState extends State<CalenderBody> {
                 height: MediaQuery.sizeOf(context).height*0,
                 width: MediaQuery.sizeOf(context).width,
                 decoration: BoxDecoration(
-                  color: Color(0xfff7f7f7),
+                  color: Color(0xFFDCDEE3),
                   borderRadius: BorderRadius.vertical(bottom: Radius.circular(40)),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: TableCalendar(
                     weekendDays: [DateTime.friday, DateTime.saturday],
-                    rowHeight: 45,
+                    rowHeight: MediaQuery.sizeOf(context).height*0.055,
                     focusedDay: _focusedDay,
                     headerStyle: HeaderStyle(
                       formatButtonVisible: false,
@@ -134,8 +140,13 @@ class _CalenderBodyState extends State<CalenderBody> {
                       outsideTextStyle: GoogleFonts.spaceGrotesk(
                         fontWeight: FontWeight.w400,
                         fontSize: 17,
-                        color: Colors.black.withOpacity(0.5),
+                        color: Color.fromARGB(255, 68, 73, 102).withOpacity(0.5),
                       ),
+                      weekendTextStyle: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 17,
+                        color: Colors.black.withOpacity(0.5),
+                      )
                     ),
                     calendarBuilders: CalendarBuilders(
                       selectedBuilder: (context, date, events) => Container(
@@ -186,7 +197,6 @@ class _CalenderBodyState extends State<CalenderBody> {
                             colors: [Color(0xff557BB5),Color.fromARGB(255, 55, 76, 107) ]
                           ),
                           borderRadius: BorderRadius.circular(100.0),
-
                         ),
                         child: Text(
                           date.day.toString(),
@@ -203,10 +213,43 @@ class _CalenderBodyState extends State<CalenderBody> {
               )
             ),
           ),
+          SliverFillRemaining(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0,top: 8),
+                child: Text(
+                  'Sort By Category!',
+                  textAlign: TextAlign.left,
+                  style: GoogleFonts.spaceGrotesk(
+                    color: Color.fromARGB(255, 71, 115, 180) ,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 27,
+                  ),
+                
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 8),
+                child: CategroySlide(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0, right: 20,left: 20),
+                child: DottedLine(dashLength: 12, dashGapLength: 30),
+              ),
+              Column(
+                children: List<int>.generate(6, (index) => index)
+                    .map((index) => 
+                     TodoTask(title: 'Title $index', hasPB: true, time: DateTime.now().add(Duration(hours: 1))),
+                    )
+                    .toList(),
+              ),
+            ],
+          ),
+        )
         ],
       ),
-
     );
   }
-  
 }

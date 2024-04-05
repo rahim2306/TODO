@@ -22,8 +22,9 @@ class _CalendarPageState extends State<CalendarPage> {
     return Scaffold(
       extendBody: true,
       appBar: Hidable(
+        
         controller: scrollController,
-        preferredWidgetSize: Size.fromHeight(MediaQuery.sizeOf(context).height*0.1),
+        preferredWidgetSize: Size.fromHeight(MediaQuery.sizeOf(context).height*0.11),
         child: BuildAppBar(isWhite: true,)
       ),
       body: CalenderBody(scrollController: scrollController),

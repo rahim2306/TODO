@@ -11,7 +11,7 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
 
     return AppBar(
-      backgroundColor: isWhite ? Color(0xfff7f7f7) :Color(0xFFDCDEE3),
+      backgroundColor: isWhite ? Color(0xFFDCDEE3) :Color(0xFFDCDEE3),
       elevation: 0,
       shadowColor: Color(0xFFDCDEE3),
       toolbarHeight: MediaQuery.of(context).size.height * 0.1,
@@ -23,30 +23,27 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
             width: MediaQuery.of(context).size.width * 0.36,
           ),
           Spacer(),
-          _buildProfileButton(),
+          _buildProfileButton(context),
         ],
       ),
     );
   }
 
-  Widget _buildProfileButton() {
+  Widget _buildProfileButton(BuildContext context) {
+    double height =  MediaQuery.sizeOf(context).height*0.05;
     return IconButton(
       onPressed: () {
-        // Navigate to profile page or show profile options
+        //todo profile page
       },
       icon: CircleAvatar(
-        radius: 26,
-        backgroundColor: Colors.transparent,
-        child: CircleAvatar(
-          radius: 25,
+          radius: height/2,
           backgroundColor: Color(0xff455E86),
           child: Icon(
             Icons.account_circle,
-            size: 50,
+            size: height,
             color: Colors.white,
           ),
         ),
-      ),
     );
   }
 

@@ -9,8 +9,8 @@ class FAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: MediaQuery.sizeOf(context).height *.09,
-        width: MediaQuery.sizeOf(context).height *.09,
+        height: MediaQuery.sizeOf(context).height *.08,
+        width: MediaQuery.sizeOf(context).height *.08,
         child: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
@@ -26,11 +26,10 @@ class FAB extends StatelessWidget {
           },
           shape: const CircleBorder(),
           backgroundColor: Colors.transparent,
-          elevation: 3,
           child: Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration:  BoxDecoration(
               shape: BoxShape.circle, 
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -40,6 +39,14 @@ class FAB extends StatelessWidget {
                   Color(0xff789DD6),
                 ],
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xff789DD6).withOpacity(0.6),
+                  spreadRadius: 3,
+                  blurRadius: 2,
+                  offset: Offset(0, 1)
+                ),
+              ],
             ),
             child: Icon(
               Icons.add_rounded,

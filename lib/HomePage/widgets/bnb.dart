@@ -19,7 +19,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return Stack(
       children:[
         Container(
-          height: MediaQuery.sizeOf(context).height*0.156,
+          height: MediaQuery.sizeOf(context).height*0.16,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -29,10 +29,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 0,
+          bottom: -5,
           child: SizedBox(
             width: MediaQuery.sizeOf(context).width,
-            height: MediaQuery.sizeOf(context).height*0.156,
+            height: MediaQuery.sizeOf(context).height*0.16,
             child: Image.asset(
               'assets/images/bnb.png', 
               fit: BoxFit.fitWidth, 
@@ -81,10 +81,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               if(isHome)
-              {Navigator.pushReplacement(
+              {
+                Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => CalendarPage()),
-              );}
+              );
+              }
             },
             child: Container(
               height: MediaQuery.sizeOf(context).height * 0.075,
