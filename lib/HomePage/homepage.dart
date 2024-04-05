@@ -95,9 +95,8 @@ class _TodoHomePageState extends State<TodoHomePage> {
               child: CategroySlide()
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(width: 16,),
                 Text(
                   'You Have 3 Tasks For Today',
                   textAlign: TextAlign.left,
@@ -107,7 +106,6 @@ class _TodoHomePageState extends State<TodoHomePage> {
                     color: Color(0xff557BB5)
                   ),
                 ),
-                SizedBox(width: MediaQuery.sizeOf(context).width*0.04,),
                 CustomDropDownButton(size:46),
               ],
             ),

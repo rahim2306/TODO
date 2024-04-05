@@ -29,43 +29,45 @@ class _CategroySlideState extends State<CategroySlide> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 110,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categoryData.length,
-        itemBuilder: (context, index) => GestureDetector(
-          onTap: () {
-            setState(() {
-              categoryData[index].isSelected = !categoryData[index].isSelected;
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(right: 12, bottom: 8, top: 8),
-            child: Material(
-              elevation: 3,
-              borderRadius: BorderRadius.circular(10),
-              color: categoryData[index].isSelected ? const Color.fromARGB(255, 71, 115, 180) : Colors.white,
-              child: Container(
-                height: 90,
-                width: 72,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(categoryData[index].icon, color: categoryData[index].isSelected ? Colors.white : const Color.fromARGB(255, 39, 64, 101)),
-                    ),
-                    const SizedBox(height: 3),
-                    Text(
-                      categoryData[index].name,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: categoryData[index].isSelected ? Colors.white : const Color.fromARGB(255, 39, 64, 101),
+      child: Center(
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: categoryData.length,
+          itemBuilder: (context, index) => GestureDetector(
+            onTap: () {
+              setState(() {
+                categoryData[index].isSelected = !categoryData[index].isSelected;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 6, bottom: 8, top: 8, left:6),
+              child: Material(
+                elevation: 3,
+                borderRadius: BorderRadius.circular(10),
+                color: categoryData[index].isSelected ? const Color.fromARGB(255, 71, 115, 180) : Colors.white,
+                child: Container(
+                  height: 90,
+                  width: 72,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(categoryData[index].icon, color: categoryData[index].isSelected ? Colors.white : const Color.fromARGB(255, 39, 64, 101)),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 3),
+                      Text(
+                        categoryData[index].name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: categoryData[index].isSelected ? Colors.white : const Color.fromARGB(255, 39, 64, 101),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
