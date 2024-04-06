@@ -51,6 +51,8 @@ dependencies:
   intl: ^0.19.0
   scroll_date_picker: ^3.8.0
   dotted_line: ^3.2.2
+  sticky_headers: ^0.3.0+2
+  sliver_tools: ^0.2.12
 
 
 dev_dependencies:

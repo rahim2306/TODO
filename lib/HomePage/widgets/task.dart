@@ -80,7 +80,7 @@ class _TodoTaskState extends State<TodoTask> {
             duration: const Duration(milliseconds: 300), // Adjust duration as needed
             curve: Curves.easeInOut, // Adjust curve as needed
             height: _expanded ? MediaQuery.of(context).size.height * 0.22 : 60,
-            child: _buildTaskItem(context),
+            child: Center(child: _buildTaskItem(context)),
           ),
         ),
       ),
@@ -162,7 +162,7 @@ class _TodoTaskState extends State<TodoTask> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        PercentageIndicator(),
+                        if(widget.hasPB) PercentageIndicator(),
                         SizedBox(width: 10,),
                         Container(
                           width: 100,

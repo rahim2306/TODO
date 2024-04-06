@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace
 
-import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:project/HomePage/widgets/categoryslide.dart';
 import 'package:project/HomePage/widgets/task.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:project/HomePage/widgets/dbd.dart';
@@ -213,41 +211,20 @@ class _CalenderBodyState extends State<CalenderBody> {
               )
             ),
           ),
-          SliverFillRemaining(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0,top: 8),
-                child: Text(
-                  'Sort By Category!',
-                  textAlign: TextAlign.left,
-                  style: GoogleFonts.spaceGrotesk(
-                    color: Color.fromARGB(255, 71, 115, 180) ,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 27,
+          SliverList(
+            key: Key('UniqueKey'),
+            delegate: SliverChildListDelegate(
+              [
+                for(var i = 0; i < 7 ; i++)
+                  TodoTask(
+                    title: 'Title $i',
+                    time: DateTime.now().add(Duration(hours: 1)),
+                    hasPB: i.isEven ? true : false,
                   ),
-                
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 8),
-                child: CategroySlide(),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0, right: 20,left: 20),
-                child: DottedLine(dashLength: 12, dashGapLength: 30),
-              ),
-              Column(
-                children: List<int>.generate(6, (index) => index)
-                    .map((index) => 
-                     TodoTask(title: 'Title $index', hasPB: true, time: DateTime.now().add(Duration(hours: 1))),
-                    )
-                    .toList(),
-              ),
-            ],
+                SizedBox(height: MediaQuery.sizeOf(context).height*0.153,)
+              ]
+            ),
           ),
-        )
         ],
       ),
     );
