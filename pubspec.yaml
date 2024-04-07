@@ -53,6 +53,7 @@ dependencies:
   dotted_line: ^3.2.2
   sticky_headers: ^0.3.0+2
   sliver_tools: ^0.2.12
+  sliver_fill_remaining_box_adapter: ^1.0.0
 
 
 dev_dependencies:

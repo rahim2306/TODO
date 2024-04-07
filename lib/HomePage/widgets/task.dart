@@ -79,7 +79,7 @@ class _TodoTaskState extends State<TodoTask> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300), // Adjust duration as needed
             curve: Curves.easeInOut, // Adjust curve as needed
-            height: _expanded ? MediaQuery.of(context).size.height * 0.22 : 60,
+            height: _expanded ? MediaQuery.of(context).size.height * 0.22 : MediaQuery.of(context).size.height * 0.07,
             child: Center(child: _buildTaskItem(context)),
           ),
         ),
@@ -89,127 +89,127 @@ class _TodoTaskState extends State<TodoTask> {
 
   Widget _buildTaskItem(BuildContext context) {
     return Container(
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(20),
-      border: Border.all(width: 1, color: const Color(0xffAAAAAA)),
-    ),
-    child: _expanded
-        ? SingleChildScrollView(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ListTile(
-                    titleAlignment: ListTileTitleAlignment.center,
-                    leading: Image.asset(
-                      'assets/images/todo_icon.png',
-                      width: (MediaQuery.of(context).size.height * 0.07) * 0.625,
-                    ),
-                    title: Text(
-                      widget.title,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.spaceGrotesk(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(width: 1, color: const Color(0xffAAAAAA)),
+      ),
+      child: _expanded
+          ? SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ListTile(
+                      titleAlignment: ListTileTitleAlignment.center,
+                      leading: Image.asset(
+                        'assets/images/todo_icon.png',
+                        width: (MediaQuery.of(context).size.height * 0.07) * 0.625,
                       ),
-                    ),
-                    trailing: Text(
-                      _formatTime(widget.time),
-                      style: GoogleFonts.spaceGrotesk(
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal,
-                        color: const Color(0x60000000),
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: (MediaQuery.sizeOf(context).height*0.09),
-                        width: MediaQuery.sizeOf(context).width*0.54,
-                        decoration: BoxDecoration(
-                          color: Color(0xffd7d7d7),
-                          borderRadius: BorderRadius.circular(6)
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 6),
-                          child: SingleChildScrollView(
-                            child: Text(
-                              'This Task involves making a project abut a todo app and blah blah blah blah blah blah blah blah blahblah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
-                              style: GoogleFonts.spaceGrotesk(
-                                fontWeight: FontWeight.w200,
-                                fontSize: 12
-                              )
-                            ),
-                          ),
+                      title: Text(
+                        widget.title,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.spaceGrotesk(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(width: MediaQuery.sizeOf(context).width*0.02,),
-                      Container(
-                        height: (MediaQuery.sizeOf(context).height*0.09),
-                        width: MediaQuery.sizeOf(context).width*0.27,
-                        decoration: BoxDecoration(
-                          color: Color(0xffd7d7d7),
-                          borderRadius: BorderRadius.circular(6)
+                      trailing: Text(
+                        _formatTime(widget.time),
+                        style: GoogleFonts.spaceGrotesk(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                          color: const Color(0x60000000),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 39,
-                    child: Row(
+                      ),
+                    ),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if(widget.hasPB) PercentageIndicator(),
-                        SizedBox(width: 10,),
                         Container(
-                          width: 100,
-                          height: 28,
+                          height: (MediaQuery.sizeOf(context).height*0.09),
+                          width: MediaQuery.sizeOf(context).width*0.54,
                           decoration: BoxDecoration(
-                            color: const Color(0xff557BB5),
-                            borderRadius: BorderRadius.circular(200),
+                            color: Color(0xffd7d7d7),
+                            borderRadius: BorderRadius.circular(6)
                           ),
-                          child: Center(
-                            child: Text(
-                              'Completed',
-                              style: GoogleFonts.spaceGrotesk(
-                                color: const Color(0xfff7f7f7),
-                                fontSize: 15,
+                          child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 6),
+                            child: SingleChildScrollView(
+                              child: Text(
+                                'This Task involves making a project abut a todo app and blah blah blah blah blah blah blah blah blahblah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+                                style: GoogleFonts.spaceGrotesk(
+                                  fontWeight: FontWeight.w200,
+                                  fontSize: 12
+                                )
                               ),
                             ),
                           ),
                         ),
+                        SizedBox(width: MediaQuery.sizeOf(context).width*0.02,),
+                        Container(
+                          height: (MediaQuery.sizeOf(context).height*0.09),
+                          width: MediaQuery.sizeOf(context).width*0.27,
+                          decoration: BoxDecoration(
+                            color: Color(0xffd7d7d7),
+                            borderRadius: BorderRadius.circular(6)
+                          ),
+                        )
                       ],
                     ),
-                  )
-                ],
-              ),
-            )
-          : ListTile(
-              titleAlignment: ListTileTitleAlignment.center,
-              leading: Image.asset(
-                'assets/images/todo_icon.png',
-                width: (MediaQuery.of(context).size.height * 0.07) * 0.625,
-              ),
-              title: Text(
-                widget.title,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.spaceGrotesk(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
+                    SizedBox(
+                      height: 39,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if(widget.hasPB) PercentageIndicator(),
+                          SizedBox(width: 10,),
+                          Container(
+                            width: 100,
+                            height: 28,
+                            decoration: BoxDecoration(
+                              color: const Color(0xff557BB5),
+                              borderRadius: BorderRadius.circular(200),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Completed',
+                                style: GoogleFonts.spaceGrotesk(
+                                  color: const Color(0xfff7f7f7),
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            : ListTile(
+                titleAlignment: ListTileTitleAlignment.center,
+                leading: Image.asset(
+                  'assets/images/todo_icon.png',
+                  width: (MediaQuery.of(context).size.height * 0.07) * 0.625,
+                ),
+                title: Text(
+                  widget.title,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.spaceGrotesk(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                trailing: Text(
+                  _formatTime(widget.time),
+                  style: GoogleFonts.spaceGrotesk(
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
+                    color: const Color(0x60000000),
+                  ),
                 ),
               ),
-              trailing: Text(
-                _formatTime(widget.time),
-                style: GoogleFonts.spaceGrotesk(
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-                  color: const Color(0x60000000),
-                ),
-              ),
-            ),
     );
   }
 

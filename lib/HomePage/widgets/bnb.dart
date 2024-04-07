@@ -45,10 +45,16 @@ class CustomBottomNavigationBar extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               if(!isHome)
-              {Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => TodoHomePage()),
-              );}
+              {
+                Navigator.pushReplacement(
+                  context, 
+                  PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) => TodoHomePage(),
+                      transitionDuration: Duration.zero,
+                      reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              }
             },
             child: Container(
               height: MediaQuery.sizeOf(context).height *.075,
@@ -82,10 +88,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
             onTap: () {
               if(isHome)
               {
-                Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => CalendarPage()),
-              );
+               Navigator.pushReplacement(
+                  context, 
+                  PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) => CalendarPage(),
+                      transitionDuration: Duration.zero,
+                      reverseTransitionDuration: Duration.zero,
+                  ),
+                );
               }
             },
             child: Container(
