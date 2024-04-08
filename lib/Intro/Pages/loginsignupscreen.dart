@@ -35,6 +35,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isKeyBoard = MediaQuery.of(context).viewInsets.bottom == 0;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(
@@ -148,7 +149,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                     ),
                   ),
                 ),
-                Row(
+                if(isKeyBoard) Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(

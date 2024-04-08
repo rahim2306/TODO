@@ -130,7 +130,6 @@ class _TodoHomePageState extends State<TodoHomePage> {
                   ],
             ),
             SizedBox(height: MediaQuery.sizeOf(context).height*0.155,),
-
           ],
         ),
       ),

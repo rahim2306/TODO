@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:project/ProfilePage/profilepage.dart';
 
 class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BuildAppBar({super.key, required this.isWhite});
@@ -33,7 +34,10 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
     double height =  MediaQuery.sizeOf(context).height*0.05;
     return IconButton(
       onPressed: () {
-        //todo profile page
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfilePage()),
+        );
       },
       icon: CircleAvatar(
           radius: height/2,
