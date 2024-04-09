@@ -2,8 +2,9 @@
 
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project/Intro/Pages/intro_page.dart';
+import 'package:project/Intro/Pages/pageview.dart';
 import 'package:project/ProfilePage/Widgets/info.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -263,7 +264,10 @@ class _ProfilePageState extends State<ProfilePage>  {
                 child: ElevatedButton(
                   onPressed: () => {
                     setState(() {
-                      _isVisible = true;
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyPageView()),
+                      );
                     })
                   },
                   style: ElevatedButton.styleFrom(

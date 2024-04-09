@@ -56,7 +56,6 @@ dependencies:
   sliver_fill_remaining_box_adapter: ^1.0.0
   calendar_view: ^1.1.0
   animations: ^2.0.11
-  flutter_keyboard_visibility: ^6.0.0
 
 
 dev_dependencies:

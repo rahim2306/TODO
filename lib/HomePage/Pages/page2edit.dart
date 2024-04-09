@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,11 +12,83 @@ class EditPage2 extends StatefulWidget {
 
 class _EditPage2State extends State<EditPage2> {
 
+  TimeOfDay? _reminder;
+  late TimeOfDay _time;
+  DateTime _date = DateTime.now();
   bool progressionBarEnabled = false;
   bool setCategory = false;
   bool setPriority = false;
 
-   @override
+  final _timePickerTheme = TimePickerThemeData(
+    dialTextStyle: GoogleFonts.spaceGrotesk(
+      color: Colors.black
+    ),
+    backgroundColor: Color(0xfff7f7f7),
+    hourMinuteShape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      side: BorderSide(color: Color(0xff557BB5), width: 4),
+    ),
+    dayPeriodBorderSide: const BorderSide(color: Color(0xff557BB5), width: 4),
+    dayPeriodColor: MaterialStateColor.resolveWith((states) =>
+        states.contains(MaterialState.selected) ? Color.fromARGB(255, 110, 151, 212):Colors.white),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(15)),
+    ),
+    dayPeriodTextColor: Color(0xff010101),
+    dayPeriodShape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      side: BorderSide(color: Color(0xff557BB5), width: 4),
+    ),
+    hourMinuteColor: MaterialStateColor.resolveWith((states) =>
+        states.contains(MaterialState.selected) ? Color.fromARGB(255, 110, 151, 212):Colors.white),
+    hourMinuteTextColor: MaterialStateColor.resolveWith(
+        (states) => states.contains(MaterialState.selected) ? Colors.white : Color(0xff557BB5)),
+    dialHandColor: Colors.blueGrey.shade700,
+    dialBackgroundColor: Color.fromARGB(255, 110, 151, 212),
+    hourMinuteTextStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    dayPeriodTextStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+    helpTextStyle:
+        GoogleFonts.spaceGrotesk(
+          fontSize: 24, 
+          fontWeight: FontWeight.bold, 
+          color: Color(0xff557BB5)
+        ),
+    dialTextColor: MaterialStateColor.resolveWith(
+        (states) => states.contains(MaterialState.selected) ? Color.fromARGB(255, 100, 145, 213): Colors.white),
+    elevation: 3,
+  );
+
+  void _showDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2024),
+      lastDate: DateTime(2025),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: Color.fromARGB(255, 130, 153, 188), 
+              onPrimary: Colors.black, // header text color
+              onSurface: Color(0xff557BB5), // body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                foregroundColor: Color(0xff557BB5), // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    ).then((value) {
+      setState(() {
+        _date = value!;
+      });
+    });
+  }
+
+     @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Stack(
@@ -40,7 +112,7 @@ class _EditPage2State extends State<EditPage2> {
               Padding(
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
-                  'Edit Task',
+                  'Edit Some Details',
                   textAlign: TextAlign.left,
                   style: GoogleFonts.spaceGrotesk(
                     color: const Color(0xff557BB5),
@@ -76,24 +148,28 @@ class _EditPage2State extends State<EditPage2> {
                             fontSize: 22,
                           ),
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: '...',
-                              hintStyle: GoogleFonts.spaceGrotesk(
-                                  color: const Color(0xff557BB5), fontSize: 18),
-                              filled: true,
-                              fillColor: const Color(0xffE7E7E7),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide.none,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.calendar_month_outlined,
-                                color: const Color(0xff557BB5),
+                        GestureDetector(
+                          onTap: _showDatePicker,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: TextField(
+                              enabled: false,
+                              decoration: InputDecoration(
+                                hintText: '...',
+                                hintStyle: GoogleFonts.spaceGrotesk(
+                                    color: const Color(0xff557BB5), fontSize: 18),
+                                filled: true,
+                                fillColor: const Color(0xffE7E7E7),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 16.0),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide.none,
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.calendar_month_outlined,
+                                  color: const Color(0xff557BB5),
+                                ),
                               ),
                             ),
                           ),
@@ -116,24 +192,54 @@ class _EditPage2State extends State<EditPage2> {
                             fontSize: 22,
                           ),
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: '...',
-                              hintStyle: GoogleFonts.spaceGrotesk(
-                                  color: const Color(0xff557BB5), fontSize: 18),
-                              filled: true,
-                              fillColor: const Color(0xffE7E7E7),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide.none,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.timer_outlined,
-                                color: const Color(0xff557BB5),
+                        GestureDetector(
+                          onTap: () async {
+                            final TimeOfDay? time = await showTimePicker(
+                              context: context,
+                              initialEntryMode: TimePickerEntryMode.dialOnly,
+                              initialTime: TimeOfDay.now(),
+                              builder: (context, child) {
+                                return Theme(
+                                  data: Theme.of(context).copyWith(
+                                    timePickerTheme: _timePickerTheme,
+                                    textButtonTheme: TextButtonThemeData(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateColor.resolveWith((states) => Color(0xff557BB5)),
+                                        foregroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
+                                        overlayColor: MaterialStateColor.resolveWith((states) => Color(0xff557BB5)),
+                                      ),
+                                    ),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                            );
+                            if(time != null){
+                              setState(() {
+                                _time = time;
+                              });
+                            }
+                          },
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: TextField(
+                              enabled: false,
+                              decoration: InputDecoration(
+                                hintText: '...',
+                                hintStyle: GoogleFonts.spaceGrotesk(
+                                    color: const Color(0xff557BB5), fontSize: 18),
+                                filled: true,
+                                fillColor: const Color(0xffE7E7E7),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 16.0),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide.none,
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.timer_outlined,
+                                  color: const Color(0xff557BB5),
+                                ),
                               ),
                             ),
                           ),
@@ -288,32 +394,61 @@ class _EditPage2State extends State<EditPage2> {
                       fontSize: 22,
                     ),
                   ),
-                  SizedBox(width: MediaQuery.sizeOf(context).width*0.31), // Add spacing between text and switch
-                  Container(
-                    width: 91,
-                    height: 33,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff557BB5),
-                      borderRadius: BorderRadius.circular(200),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children:[
-                        Icon(
-                          Icons.notification_add_outlined,
-                          color: Colors.white,
-                          applyTextScaling: true,
-                          weight: 8,
-                          size: 25,
-                        ),
-                        Text(
-                          'Add',
-                          style: GoogleFonts.spaceGrotesk(
-                            color: const Color(0xfff7f7f7),
-                            fontSize: 20,
+                  SizedBox(width: MediaQuery.sizeOf(context).width*0.31), 
+                  GestureDetector(
+                    onTap: () async {
+                      final TimeOfDay? reminder = await showTimePicker(
+                        context: context,
+                        initialEntryMode: TimePickerEntryMode.dialOnly,
+                        initialTime: TimeOfDay.now(),
+                        builder: (context, child) {
+                          return Theme(
+                            data: Theme.of(context).copyWith(
+                              timePickerTheme: _timePickerTheme,
+                              textButtonTheme: TextButtonThemeData(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateColor.resolveWith((states) => Color(0xff557BB5)),
+                                  foregroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
+                                  overlayColor: MaterialStateColor.resolveWith((states) => Color(0xff557BB5)),
+                                ),
+                              ),
+                            ),
+                            child: child!,
+                          );
+                        },
+                      );
+                      if(reminder != null){
+                        setState(() {
+                          _reminder = reminder;
+                        });
+                      }
+                    },
+                    child: Container(
+                      width: 91,
+                      height: 33,
+                      decoration: BoxDecoration(
+                        color: const Color(0xff557BB5),
+                        borderRadius: BorderRadius.circular(200),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children:[
+                          Icon(
+                            Icons.notification_add_outlined,
+                            color: Colors.white,
+                            applyTextScaling: true,
+                            weight: 8,
+                            size: 25,
                           ),
-                        ),
-                      ]
+                          Text(
+                            'Add',
+                            style: GoogleFonts.spaceGrotesk(
+                              color: const Color(0xfff7f7f7),
+                              fontSize: 20,
+                            ),
+                          ),
+                        ]
+                      ),
                     ),
                   ),    
                 ],
