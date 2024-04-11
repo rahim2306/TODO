@@ -1,36 +1,23 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, unnecessary_import, unused_import, unused_field, unused_element
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/HomePage/homepage.dart';
 import 'package:project/Intro/widgets/Page%20Widgets/login.dart';
-import 'package:project/Intro/widgets/Page%20Widgets/signup.dart';
 import 'package:project/Intro/widgets/introbutton.dart';
 
-class SignUpScreen extends StatefulWidget {
-  final int? currentPage;
+class Login extends StatefulWidget {
+
   final PageController controller;
 
-  const SignUpScreen({required this.controller, this.currentPage});
-  
+  const Login({super.key, required this.controller});
+
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  int currentpage = 0; 
-  late PageController _pageController;
-
+class _LoginState extends State<Login> {
   @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(initialPage: widget.currentPage ?? 0); 
-    currentpage = widget.currentPage ?? 0; 
-  }
-
-   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -57,11 +44,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: MediaQuery.sizeOf(context).height*0.03,),
+              SizedBox(height: MediaQuery.sizeOf(context).height*0.06,),
               Center(
                 child: Container(
                   width: 360,
-                  height: MediaQuery.of(context).size.height * 0.6 ,
+                  height: MediaQuery.of(context).size.height * 0.5 ,
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     boxShadow: [
@@ -76,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SignUpPage(controller: widget.controller,),
+                      LoginPage(controller: widget.controller,),
                       SizedBox(height: 15,),
                       CustomButton(
                         onPressed: () {
@@ -86,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         );
                         },
                         colors: [Color.fromARGB(255, 112, 157, 224), Color.fromARGB(255, 77, 118, 185)],
-                        text: "Create",
+                        text: "Login",
                         width: MediaQuery.of(context).size.width * 0.53,
                         height: (MediaQuery.of(context).size.width * 0.54) / 3.085,
                       ),
@@ -95,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 )
               ),
               Text(
-                "Already Have An Account?",
+                "Don’t Have an Account?",
                 style: GoogleFonts.spaceGrotesk(
                   fontSize: 16,
                   color: Color(0xFF214275),
@@ -104,10 +91,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               GestureDetector(
                 onTap: () {
-                  widget.controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOutExpo);
+                  widget.controller.previousPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOutExpo);
                 },
                 child: Text(
-                  "Login" ,
+                  "SignUp" ,
                   style: GoogleFonts.spaceGrotesk(
                     fontSize: 16,
                     color: Color(0xFF5F90D9),

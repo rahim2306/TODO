@@ -35,6 +35,7 @@ class Intro extends StatelessWidget {
               onPressed: () {
               controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
               },
+              colors: [Color.fromARGB(255, 112, 157, 224), Color.fromARGB(255, 77, 118, 185)],
               text: 'Continue',
               width: MediaQuery.sizeOf(context).width * 0.53, 
               height: (MediaQuery.sizeOf(context).width * 0.54)/3.085, 

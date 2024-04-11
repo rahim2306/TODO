@@ -9,13 +9,14 @@ class CustomButton extends StatefulWidget {
   final Function()? onPressed;
   final double width;
   final double height;
+  final List<Color> colors;
 
   const CustomButton({
     super.key,
     required this.text,
     required this.onPressed,
     required this.width,
-    required this.height,
+    required this.height, required this.colors,
   });
 
   @override
@@ -29,17 +30,17 @@ class _CustomButtonState extends State<CustomButton> {
       width: widget.width,
       height: widget.height,
       child: Material(
-        elevation: 6, 
+        elevation: 2, 
         shadowColor: Color(0xF55570B5),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(20),
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color.fromARGB(255, 112, 157, 224), Color.fromARGB(255, 77, 118, 185)],
+              colors: widget.colors,
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
-            borderRadius: BorderRadius.circular(8), 
+            borderRadius: BorderRadius.circular(20), 
           ),
           child: InkWell(
             onTap: widget.onPressed,
@@ -48,8 +49,8 @@ class _CustomButtonState extends State<CustomButton> {
                 widget.text,
                 style: GoogleFonts.spaceGrotesk(
                   color: Colors.white,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 26,
                   letterSpacing: 2.0,
                 ), 
               ),

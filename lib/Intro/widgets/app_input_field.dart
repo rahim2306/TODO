@@ -24,11 +24,11 @@ class _InputFieldState extends State<InputField> {
       child: TextFormField(
         controller: _nameController,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(top:12, bottom:12, left:27),
+          contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal:27),
           hintText: widget.hintText, // Use the hint text parameter
           hintStyle: GoogleFonts.spaceGrotesk(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
             color: Color(0x50557BB5),
           ),
           border: OutlineInputBorder(

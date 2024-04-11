@@ -31,7 +31,7 @@ class LoginPage extends StatelessWidget {
                     right:MediaQuery.sizeOf(context).width*0.6010,
                     child: GestureDetector(
                       onTap: () {
-                        controller.previousPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+                        controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
                       },
                       child: Image.asset(
                         'assets/icons/back.png',

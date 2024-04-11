@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:project/Intro/Pages/loginsignupscreen.dart';
 import 'package:project/Intro/widgets/app_input_field.dart';
-import 'package:project/Intro/widgets/footer_widget.dart';
 import 'package:project/Intro/widgets/introbutton.dart';
 
 class NameQuestion extends StatelessWidget {
@@ -30,15 +28,15 @@ class NameQuestion extends StatelessWidget {
               ),
             ),
           ),
-          AppFooter(),
           //! Button
           Positioned(
             bottom: MediaQuery.sizeOf(context).height*0.070,
             left: MediaQuery.sizeOf(context).width*0.233,
             child: CustomButton(
               onPressed: () {
-              controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+              controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOutExpo);
               },
+              colors: [Color.fromARGB(255, 112, 157, 224), Color.fromARGB(255, 77, 118, 185)],
               text: 'Continue',
               width: MediaQuery.sizeOf(context).width * 0.53, 
               height: (MediaQuery.sizeOf(context).width * 0.54)/3.085, 
@@ -62,7 +60,7 @@ class NameQuestion extends StatelessWidget {
             left: MediaQuery.sizeOf(context).width*0.43,
             child: GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginSignUpScreen(controller: controller,currentPage: 0,)));
+                  controller.animateToPage(3, duration: Duration(milliseconds: 500), curve: Curves.easeInOutExpo);
                 },
                 child: Text(
                   "Login",
