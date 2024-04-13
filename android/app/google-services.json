@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "922842737606",
+    "project_id": "to-do-master-b9468",
+    "storage_bucket": "to-do-master-b9468.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922842737606:android:5878aefe43e1f81c9da0c7",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABfuzUYlyTajSxkh69UXlRFEkhp7SCz74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
