@@ -6,8 +6,10 @@ import 'package:project/HomePage/homepage.dart';
 
 
 class CustomBottomNavigationBar extends StatelessWidget {
+  
   final bool isHome;
   final BuildContext context2;
+
   const CustomBottomNavigationBar({
     super.key,
     required this.isHome,

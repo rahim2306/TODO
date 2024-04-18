@@ -46,8 +46,8 @@ class _CategroySlideState extends State<CategroySlide> {
                 borderRadius: BorderRadius.circular(10),
                 color: categoryData[index].isSelected ? const Color.fromARGB(255, 71, 115, 180) : Colors.white,
                 child: Container(
-                  height: 90,
-                  width: 72,
+                  height: MediaQuery.sizeOf(context).height*0.111,
+                  width: MediaQuery.sizeOf(context).width*0.183,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -62,7 +62,7 @@ class _CategroySlideState extends State<CategroySlide> {
                       Text(
                         categoryData[index].name,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: MediaQuery.sizeOf(context).height*0.018,
                           color: categoryData[index].isSelected ? Colors.white : const Color.fromARGB(255, 39, 64, 101),
                         ),
                       ),

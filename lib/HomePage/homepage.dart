@@ -34,6 +34,8 @@ class _TodoHomePageState extends State<TodoHomePage> {
   }
 
   Widget _buildBody(BuildContext context) {
+    // print(MediaQuery.sizeOf(context).height);
+    // print(MediaQuery.sizeOf(context).width);
     return Container(
       height: MediaQuery.sizeOf(context).height,
       decoration: BoxDecoration(
@@ -80,11 +82,14 @@ class _TodoHomePageState extends State<TodoHomePage> {
                         ),
                       ),
                       Image.asset(
-                        'assets/images/Vector2.png',
-                        width: 90.0,
-                        height: 80.0,
-                      ),
-                      Image.asset('assets/images/file.png'),
+                          'assets/images/Vector2.png',
+                          width: MediaQuery.sizeOf(context).width*0.222,
+                          height: MediaQuery.sizeOf(context).height*0.099,
+                        ),
+                      Image.asset('assets/images/file.png',
+                      height: MediaQuery.sizeOf(context).height*0.099,
+                      width: MediaQuery.sizeOf(context).width*0.18,),
+                      
                     ],
                   ),
                 ),

@@ -120,7 +120,7 @@ class _CalenderBodyState extends State<CalenderBody> {
                         fontSize: 28,
                       ),
                     ),
-                    daysOfWeekHeight: 37,
+                    daysOfWeekHeight: MediaQuery.sizeOf(context).height*0.05,
                     firstDay: DateTime.utc(2024, 1, 1),
                     lastDay: DateTime.utc(2025, 1, 1),
                     calendarFormat: _calendarFormat,
@@ -299,7 +299,7 @@ class _CalenderBodyState extends State<CalenderBody> {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: Container(
-                    height: 170.0,
+                    height: MediaQuery.sizeOf(context).height*0.211,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         boxShadow: [
@@ -358,7 +358,7 @@ class _CalenderBodyState extends State<CalenderBody> {
                                     progress==100 ? 'You Completed\n All Your Tasks\n For Today' : '$completedTasks of $_taskNumber complete',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.spaceGrotesk(
-                                      fontSize: 20.0,
+                                      fontSize: MediaQuery.sizeOf(context).width*0.05,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff090909)
                                     ),
